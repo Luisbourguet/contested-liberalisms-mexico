@@ -1,0 +1,36 @@
+CC0 1.0 Universal (CC0 1.0) — Public Domain Dedication
+
+This license applies ONLY to the contents of the /data/ and /protocol/ directories
+of this repository (the structured analytical tables, the machine-readable JSON
+bundle, the bibliography, and the premises-and-hypotheses protocol document).
+
+It does NOT apply to the Accepted Author Manuscript (/manuscript/), which is
+licensed separately under CC BY-NC 4.0 (see LICENSE).
+
+─────────────────────────────────────────────────────────────────────────────
+
+The person who associated a work with this deed has dedicated the work to the
+public domain by waiving all of his or her rights to the work worldwide under
+copyright law, including all related and neighboring rights, to the extent
+allowed by law.
+
+You can copy, modify, distribute and perform the work, even for commercial
+purposes, all without asking permission.
+
+Full legal code: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+─────────────────────────────────────────────────────────────────────────────
+
+WHY CC0 FOR THE DATA LAYER
+
+FAIR (Findable, Accessible, Interoperable, Reusable) practice recommends the
+most permissive terms for structured research data, so that other researchers
+can reapply the analytical instruments (the Constitutional Legitimacy Vector,
+the community-layer coupling scheme) to new cases, and integrate the reform
+chronology into comparative datasets, without licensing friction.
+
+RECOMMENDED CITATION (courtesy, not a legal requirement)
+
+  Bourguet, Luis (2026). Contested Liberalisms in Mexico — structured
+  analytical tables and protocol [Data set]. Zenodo.
+  https://doi.org/10.5281/zenodo.21386477

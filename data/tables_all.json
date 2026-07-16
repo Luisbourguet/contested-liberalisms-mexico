@@ -1,0 +1,250 @@
+{
+  "dataset": "Contested Liberalisms in Mexico — structured analytical tables",
+  "author": "Luis Bourguet",
+  "orcid": "0000-0002-4673-4486",
+  "license": "CC0-1.0",
+  "source_article_doi": "10.5281/zenodo.21386477",
+  "description": "Machine-readable versions of the five analytical tables from the article. Coupling codes in table3: decoupled | in_dispute | synthesis (color legend red/orange/blue respectively).",
+  "tables": {
+    "table1a_clv_general_instrument": {
+      "title": "Table 1a. Pegoraro & Rinella's sources of constitutional legitimation (general instrument)",
+      "n_rows": 5,
+      "rows": [
+        {
+          "source_of_legitimation": "Tradition",
+          "maxim": "Do what the fathers did",
+          "basis_of_the_bond": "Obligation from historical continuity; the past validates the present",
+          "cpeum_anchor": "Art. 39 (sovereignty in the people, original DOF 05-02-1917); 1917 Constituent Congress Preamble"
+        },
+        {
+          "source_of_legitimation": "Agreement",
+          "maxim": "Behave according to the pacts (pacta sunt servanda)",
+          "basis_of_the_bond": "Norm binds because recipients consented; autonomy of the will",
+          "cpeum_anchor": "Art. 40 (representative, democratic, federal Republic); Art. 135 (supermajority amendment rule)"
+        },
+        {
+          "source_of_legitimation": "Divine/Religious",
+          "maxim": "Obey God",
+          "basis_of_the_bond": "Transcendent authority; the sacred sanctions the norm",
+          "cpeum_anchor": "Arts. 24 and 130 (freedom of religion; strict Church/State separation — the Reforma's constitutional legacy)"
+        },
+        {
+          "source_of_legitimation": "Reason",
+          "maxim": "Follow reason (responsa, jurisprudence, expertise)",
+          "basis_of_the_bond": "Authority of the sage, judge, or expert; rational, law-bound argumentation — primary source in a civil-law order",
+          "cpeum_anchor": "Arts. 94–107 (judiciary; jurisprudencia); Art. 28 (autonomous bodies, partially extinguished DOF 20 Dec 2024); Art. 1 (human rights via courts)"
+        },
+        {
+          "source_of_legitimation": "Authority",
+          "maxim": "Obey the leader (political/ideological law)",
+          "basis_of_the_bond": "The apex translates political values into norms; citizens obey as the group's voice (Ehrlich: 'conscious of serving the ruler, and only sometimes of serving the group')",
+          "cpeum_anchor": "Art. 80 (executive power); Art. 89 (presidential faculties); Art. 39 (sovereignty)"
+        }
+      ]
+    },
+    "table1b_clv_applied": {
+      "title": "Table 1b. The CLV applied to the two Mexican liberalisms",
+      "n_rows": 7,
+      "rows": [
+        {
+          "source": "Tradition",
+          "popular_liberalism_4T": "Juarista/Reforma lineage claimed as popular-liberal inheritance; the 4T as its authentic continuation",
+          "procedural_liberalism": "Liberal-constitutional tradition read as the rule-of-law and separation-of-powers heritage",
+          "tension_what_is_at_stake": "Both claim the liberal tradition; neither can accuse the other of abandoning it. Art. 39 sustains both readings"
+        },
+        {
+          "source": "Agreement",
+          "popular_liberalism_4T": "Consent reactivated as popular sovereignty and plebiscitary mandate (Art. 39); electoral pact as mandate for transformation",
+          "procedural_liberalism": "Constitutional compact (Art. 40, Art. 135) as the binding agreement; procedure as the locus of consent",
+          "tension_what_is_at_stake": "Both invoke the Agreement of the pact with incompatible readings: mandate-to-transform vs. compact-to-constrain"
+        },
+        {
+          "source": "Divine/Religious",
+          "popular_liberalism_4T": "Largely absent at doctrinal level; moral-traditionalist register (Cartilla Moral) borrows its tone",
+          "procedural_liberalism": "Rawlsian neutrality: law separated from morality",
+          "tension_what_is_at_stake": "Not a primary axis of conflict; noted where moral-traditionalist tone appears"
+        },
+        {
+          "source": "Reason",
+          "popular_liberalism_4T": "Suppressed: technical/law-bound authority (SCJN, INE, autonomous bodies) recoded as elitist obstacle to the popular will",
+          "procedural_liberalism": "Dominant: judicial independence, jurisprudencia, autonomous expert oversight as reason institutionalised",
+          "tension_what_is_at_stake": "The reason component is what the 4T erodes and procedural liberalism defends. Primary site of the conflict"
+        },
+        {
+          "source": "Authority",
+          "popular_liberalism_4T": "Dominant source: presidency as authentic voice of the people sutures the Ehrlichian fracture; mañaneras as daily re-enactment",
+          "procedural_liberalism": "Formally rejected (rule of law, not of persons); in practice a softer technocratic-leadership version",
+          "tension_what_is_at_stake": "The Ehrlichian fracture the 4T rhetorically dissolves and procedural liberalism insists must remain visible. Art. 39 sustains both"
+        },
+        {
+          "source": "Common law",
+          "popular_liberalism_4T": "N/A",
+          "procedural_liberalism": "N/A",
+          "tension_what_is_at_stake": "Omission is principled: Glenn (2014) confirms Mexico's civil-law tradition. The 2024 judicial reform moved the system further from any common-law analogy"
+        },
+        {
+          "source": "Synthesis (legitimacy profile)",
+          "popular_liberalism_4T": "Dominant: Tradition + Agreement (electoral pact) + Authority. Reason suppressed. High mobilising capacity; low counter-majoritarian resilience",
+          "procedural_liberalism": "Dominant: Reason + Agreement (constitutional compact). Authority formally rejected. High procedural stability; low popular mobilising energy",
+          "tension_what_is_at_stake": "Constitutionally undecidable on textual grounds alone: the text contains both profiles. Resolution requires winning the political-legitimacy argument — Art. 135 is the only operative procedural arbiter"
+        }
+      ]
+    },
+    "table2_alterity_todorov": {
+      "title": "Table 2. Two liberalisms and their construction of the other (after Todorov 1982)",
+      "n_rows": 5,
+      "rows": [
+        {
+          "todorov_plane": "Axiological (value)",
+          "popular_liberalism_4T": "The other (the 'oligarchy' and its instruments) is judged morally bad, not merely different",
+          "procedural_liberalism": "The other (the popular majority) is judged not bad but epistemically deficient, to be guided"
+        },
+        {
+          "todorov_plane": "Praxeological (action)",
+          "popular_liberalism_4T": "Assimilation: the people folded into one moral-national subject; dissenters redescribed as outside the nation",
+          "procedural_liberalism": "Containment: the majority bounded by counter-majoritarian institutions and procedure"
+        },
+        {
+          "todorov_plane": "Epistemic (knowledge)",
+          "popular_liberalism_4T": "Claims intimate knowledge of 'the people' while refusing to know its internal plurality",
+          "procedural_liberalism": "Characteristic failure: refuses to know the popular subject on its own terms"
+        },
+        {
+          "todorov_plane": "Mode of inclusion",
+          "popular_liberalism_4T": "Moral-national belonging: those faithful to the popular project",
+          "procedural_liberalism": "Rights-bearing citizenship: equal individuals under law"
+        },
+        {
+          "todorov_plane": "Mode of exclusion",
+          "popular_liberalism_4T": "Moral exclusion: dissent recoded as betrayal / antinational",
+          "procedural_liberalism": "Procedural exclusion: the majority distrusted, distanced from direct rule"
+        }
+      ]
+    },
+    "table3_community_layers_coupling": {
+      "title": "Table 3. Community layers, constitutional alignment and structural decoupling (after Anderson 1983 & Pegoraro/Rinella 2016)",
+      "n_rows": 9,
+      "rows": [
+        {
+          "community_layer": "Community of Belonging",
+          "central_question": "Who are we?",
+          "popular_liberalism_4T": "Moral-historical 'we'; Juarista lineage; fidelity, not status",
+          "procedural_liberalism": "Abstract citizens; no thick identity claim",
+          "coupling_status": "Decoupled — 4T holds this register",
+          "coupling_code": "decoupled",
+          "section_ref": "§ 5"
+        },
+        {
+          "community_layer": "Imagined Community (Anderson 1983)",
+          "central_question": "What narrative unites us?",
+          "popular_liberalism_4T": "4T as fourth act of national epic; mañaneras as ritual",
+          "procedural_liberalism": "No equivalent narrative; procedure, not story",
+          "coupling_status": "Decoupled — narrative asymmetry",
+          "coupling_code": "decoupled",
+          "section_ref": "§§ 4–5"
+        },
+        {
+          "community_layer": "Moral Community",
+          "central_question": "What values bind us?",
+          "popular_liberalism_4T": "Cartilla Moral; 'no mentir, no robar'; thick ethics",
+          "procedural_liberalism": "Rawlsian neutrality: law separated from morality",
+          "coupling_status": "Decoupled — moral register occupied by 4T",
+          "coupling_code": "decoupled",
+          "section_ref": "§ 5"
+        },
+        {
+          "community_layer": "Juridical Community",
+          "central_question": "Who recognises the same constitutional frame?",
+          "popular_liberalism_4T": "Claims CPEUM; rewrites it via Art. 135",
+          "procedural_liberalism": "CPEUM as binding compact; institutions as guarantors",
+          "coupling_status": "In dispute — both claim the text",
+          "coupling_code": "in_dispute",
+          "section_ref": "§§ 5–7"
+        },
+        {
+          "community_layer": "Epistemic Community",
+          "central_question": "Who defers to specialised knowledge?",
+          "popular_liberalism_4T": "SCJN, INE recoded as elite; expertise dismantled",
+          "procedural_liberalism": "Autonomous bodies as reason institutionalised",
+          "coupling_status": "Decoupled — 4T dismantles; procedural depends on it",
+          "coupling_code": "decoupled",
+          "section_ref": "§ 6"
+        },
+        {
+          "community_layer": "Constitutional Community",
+          "central_question": "Who shares a constitutional frame?",
+          "popular_liberalism_4T": "Uses frame to remake it; Art. 135 as instrument",
+          "procedural_liberalism": "Defends existing constitutional architecture",
+          "coupling_status": "In dispute — asymmetrically",
+          "coupling_code": "in_dispute",
+          "section_ref": "§§ 5–6"
+        },
+        {
+          "community_layer": "Community of Destiny",
+          "central_question": "Is our future collectively shared?",
+          "popular_liberalism_4T": "Each reform existential: transformation or neoporfirismo",
+          "procedural_liberalism": "No eschatology; procedural project lacks urgency",
+          "coupling_status": "Decoupled — urgency vs. process",
+          "coupling_code": "decoupled",
+          "section_ref": "§ 7"
+        },
+        {
+          "community_layer": "Ontological Community",
+          "central_question": "Who shares a definition of social reality?",
+          "popular_liberalism_4T": "Redefines people, nation, democracy",
+          "procedural_liberalism": "Accepts existing definitions; no ontological contest",
+          "coupling_status": "Decoupled — 4T fights at ontological level",
+          "coupling_code": "decoupled",
+          "section_ref": "§ 2"
+        },
+        {
+          "community_layer": "SYNTHESIS (resilience profile)",
+          "central_question": "—",
+          "popular_liberalism_4T": "Aligns: belonging, imagined, moral, destiny, ontological. Gap: juridical, epistemic. High mobilising power; low institutional stability",
+          "procedural_liberalism": "Aligns: juridical, epistemic, constitutional. Gap: belonging, imagined, moral, destiny. High procedural stability; low popular rootedness",
+          "coupling_status": "STRUCTURAL DECOUPLING: non-overlapping layers. Resolution: bridge both sets or hegemonic victory. Art. 135 arbitrates; cannot reunite a split 'we'",
+          "coupling_code": "synthesis",
+          "section_ref": "§§ 5–7"
+        }
+      ]
+    },
+    "table4_reform_chronology": {
+      "title": "Table 4. Constitutional reforms of 'Plan C', 2024–2025 (all enacted via Art. 135)",
+      "n_rows": 4,
+      "rows": [
+        {
+          "reform": "Judicial reform",
+          "dof_date": "15 Sep 2024",
+          "dof_date_iso": "2024-09-15",
+          "articles_and_content": "19 articles (17, 94–101, 105, 107…); popular election of ministers, magistrates and judges; SCJN reduced 11→9; Tribunal of Judicial Discipline created",
+          "legitimacy_effect": "Reason ↓ (judicial independence, jurisprudencia)",
+          "enacted_via": "Art. 135"
+        },
+        {
+          "reform": "National Guard",
+          "dof_date": "30 Sep 2024",
+          "dof_date_iso": "2024-09-30",
+          "articles_and_content": "12 articles (13, 16, 21, 32, 55, 73, 76, 78, 82, 89, 123, 129); Guard incorporated into SEDENA; civilian character removed; overrides prior SCJN ruling",
+          "legitimacy_effect": "Reason ↓ / Authority ↑ (order, armed forces)",
+          "enacted_via": "Art. 135"
+        },
+        {
+          "reform": "Organic simplification",
+          "dof_date": "20 Dec 2024",
+          "dof_date_iso": "2024-12-20",
+          "articles_and_content": "Art. 28 et al.; extinguishes 7 autonomous bodies (INAI, COFECE, IFT, CRE, CNH, CONEVAL, MEJOREDU); functions to the Executive; expressly invokes Art. 135",
+          "legitimacy_effect": "Reason ↓ (autonomous expert oversight)",
+          "enacted_via": "Art. 135"
+        },
+        {
+          "reform": "Sovereignty / non-intervention",
+          "dof_date": "1 Apr 2025",
+          "dof_date_iso": "2025-04-01",
+          "articles_and_content": "Art. 40; new paragraphs against foreign intervention in elections and external investigation",
+          "legitimacy_effect": "Tradition/Consent ↑ (national-popular sovereignty)",
+          "enacted_via": "Art. 135"
+        }
+      ]
+    }
+  }
+}
