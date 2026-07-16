@@ -1,0 +1,61 @@
+{
+  "title": "Contested Liberalisms in Mexico: Popular Liberalism, the Fourth Transformation, and the Struggle over Constitutional Identity",
+
+  "description": "<p>Mexico's <em>Cuarta Transformación</em> (4T) is usually read as one instance of a global illiberal turn. This article argues instead that the Mexican constitutional conflict is <strong>internal to the liberal-republican tradition</strong>: rival projects each claim the mantle of liberalism to define who counts as 'the people'. Drawing on scholarship on popular and plebeian liberalism in Spanish America, it shows that the 4T advances by appropriating a popular, Juarista liberalism against a proprietary one it codes as <em>neoporfirista</em>. Four frameworks — comparative law, legitimation theory, alterity and imagined communities — are applied to presidential discourse, three constitutional reforms and political cartoons, and synthesised through a <strong>Constitutional Legitimacy Vector (CLV)</strong>. The appropriation reconfigures who counts as 'the people' and why citizens obey, producing a structural decoupling resistant to procedural resolution. The case refines the theory of illiberalism: Latin American populism can operate through <strong>appropriation of the liberal lineage</strong>, not its negation.</p><p><strong>Version note:</strong> This is the <em>Accepted Author Manuscript (AAM)</em> — the peer-reviewed, author-accepted version prior to journal typesetting and copy-editing. Accepted for publication in <em>INGURUAK — Revista Vasca de Sociología y Ciencia Política</em> (ISSN: 0214-791X). A preliminary version of this work was previously circulated under the working title 'Contested Sovereignty'.</p>",
+
+  "upload_type": "publication",
+  "publication_type": "article",
+
+  "creators": [
+    {
+      "name": "Bourguet, Luis",
+      "orcid": "0000-0002-4673-4486",
+      "affiliation": "Universidad Complutense de Madrid (UCM); Università di Torino, LabOnt — Center for Ontology; Hiroshima University, Laboratory of Complex Systems"
+    }
+  ],
+
+  "keywords": [
+    "Popular Liberalism",
+    "Plebeian Liberalism",
+    "Constitutional Identity",
+    "Constitutional Legitimacy",
+    "Constitutional Legitimacy Vector",
+    "Populism",
+    "Fourth Transformation",
+    "Cuarta Transformación",
+    "Mexico",
+    "Intra-liberal conflict",
+    "Juarismo",
+    "Liberalismo popular",
+    "Sociology of law",
+    "Comparative constitutional law",
+    "Latin American politics"
+  ],
+
+  "license": "CC-BY-NC-4.0",
+  "access_right": "open",
+  "language": "eng",
+
+  "journal_title": "INGURUAK — Revista Vasca de Sociología y Ciencia Política",
+  "journal_issn": "0214-791X",
+
+  "notes": "Accepted Author Manuscript (AAM) plus a FAIR structured-data companion. The manuscript (/manuscript/) is licensed CC BY-NC 4.0; the analytical tables, machine-readable JSON, bibliography and premises/hypotheses protocol (/data/ and /protocol/) are dedicated to the public domain under CC0 1.0 to maximise reuse. This is the peer-reviewed version accepted for publication in INGURUAK (ISSN: 0214-791X), prior to typesetting. Previously circulated as a working paper under the title 'Contested Sovereignty' at the Emergent Sovereignties — Fifth International Conference on Nationalism. Deposited in accordance with the open access policy of INGURUAK. ORCID of corresponding author: 0000-0002-4673-4486.",
+
+  "related_identifiers": [
+    {
+      "identifier": "https://emergentsovereignties.net/en/abstract/",
+      "relation": "isPreviousVersionOf",
+      "resource_type": "publication-other",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://orcid.org/0000-0002-4673-4486",
+      "relation": "isAuthoredBy",
+      "scheme": "url"
+    }
+  ],
+
+  "communities": [
+    {"identifier": "zenodo"}
+  ]
+}
