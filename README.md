@@ -1,104 +1,86 @@
 # Contested Liberalisms in Mexico
 ## Popular Liberalism, the Fourth Transformation, and the Struggle over Constitutional Identity
 
-[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/Manuscript-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+[![Data: CC0](https://img.shields.io/badge/Data-CC0%201.0-brightgreen.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21386477.svg)](https://doi.org/10.5281/zenodo.21386477)
 [![ORCID](https://img.shields.io/badge/ORCID-0000--0002--4673--4486-a6ce39.svg)](https://orcid.org/0000-0002-4673-4486)
 
----
-
-**Author:** Luis Bourguet  
-**ORCID:** [0000-0002-4673-4486](https://orcid.org/0000-0002-4673-4486)  
-**Contact:** luisbour@ucm.es
-
-**Affiliations:**
-- Universidad Complutense de Madrid (UCM), Máster en Ciencias Políticas — Nationalism and National Identities, Madrid, Spain
-- Università di Torino, LabOnt — Center for Ontology, Turin, Italy
-- Hiroshima University, Laboratory of Complex Systems, Higashi-Hiroshima, Japan
+**Author:** Luis Bourguet — [luisbour@ucm.es](mailto:luisbour@ucm.es)
+**Affiliations:** Universidad Complutense de Madrid (UCM) · Università di Torino, LabOnt — Center for Ontology · Hiroshima University, Laboratory of Complex Systems
+**Accepted (minor revisions):** INGURUAK — Revista Vasca de Sociología y Ciencia Política (ISSN: 0214-791X) · <http://inguruak.eus>
 
 ---
 
-## About this repository
+## What this repository is
 
-This repository contains the **Accepted Author Manuscript (AAM)** of an article accepted for publication in:
+This is an **open-science deposit** for the article above. It goes beyond depositing the PDF: it provides a **FAIR data companion** so the article's instruments and findings can be reused, re-applied to other cases, and checked against future events.
 
-> **INGURUAK — Revista Vasca de Sociología y Ciencia Política**  
-> *Soziologia eta Zientzia Politikoaren Euskal Aldizkaria*  
-> ISSN: 0214-791X | DOI prefix: [10.18543/inguruak](https://doi.org/10.18543/inguruak)  
-> http://inguruak.eus
-
-The manuscript is deposited here in accordance with the journal's open access policy. A citable, persistent copy with a registered DOI is also available on **Zenodo**:
-
-> 📦 [https://doi.org/10.5281/zenodo.21386477](https://doi.org/10.5281/zenodo.21386477)
-
----
+| | Findable | Accessible | Interoperable | Reusable |
+|---|:---:|:---:|:---:|:---:|
+| **How** | DOI + ORCID + Zenodo/OpenAIRE | Open, no paywall | CSV + JSON + BibTeX, explicit schema | CC0 data + explicit coding rules |
 
 ## Abstract
 
-Mexico's *Cuarta Transformación* (4T) is usually read as one instance of a global illiberal turn. This article argues instead that the Mexican constitutional conflict is **internal to the liberal-republican tradition**: rival projects each claim the mantle of liberalism to define who counts as 'the people'. Drawing on scholarship on popular and plebeian liberalism in Spanish America, it shows that the 4T advances by appropriating a popular, Juarista liberalism against a proprietary one it codes as *neoporfirista*. Four frameworks — comparative law, legitimation theory, alterity and imagined communities — are applied to presidential discourse, three constitutional reforms and political cartoons, and synthesised through a **Constitutional Legitimacy Vector (CLV)**. The appropriation reconfigures who counts as 'the people' and why citizens obey, producing a structural decoupling resistant to procedural resolution. The case refines the theory of illiberalism: Latin American populism can operate through **appropriation of the liberal lineage**, not its negation.
+Mexico's *Cuarta Transformación* (4T) is usually read as one instance of a global illiberal turn. This article argues instead that the Mexican constitutional conflict is **internal to the liberal-republican tradition**: rival projects each claim the mantle of liberalism to define who counts as 'the people'. The 4T advances by appropriating a popular, Juarista liberalism against a proprietary one it codes as *neoporfirista*. Four frameworks — comparative law (Glenn), legitimation theory (Pegoraro & Rinella), alterity (Todorov) and imagined communities (Anderson) — are synthesised through a **Constitutional Legitimacy Vector (CLV)**, producing a structural decoupling resistant to procedural resolution. The case refines the theory of illiberalism: Latin American populism can operate through **appropriation of the liberal lineage**, not its negation.
 
-**Keywords:** Popular Liberalism · Plebeian Liberalism · Constitutional Identity · Constitutional Legitimacy · Populism · Fourth Transformation (4T) · Mexico · *Cuarta Transformación*
+## Repository contents
 
----
+```
+├── README.md                     ← this file
+├── CITATION.cff                  ← how to cite
+├── .zenodo.json                  ← Zenodo deposit metadata
+├── LICENSE                       ← CC BY-NC 4.0 (manuscript)
+├── LICENSE-data                  ← CC0 1.0 (data + protocol)
+│
+├── manuscript/
+│   └── Bourguet_2026_Contested_Liberalisms_Mexico_AAM.pdf   ← add this yourself
+│
+├── data/                         ← CC0 · structured, machine-readable
+│   ├── README.md
+│   ├── table1a_clv_general_instrument.csv    ← reusable blank CLV instrument
+│   ├── table1b_clv_applied.csv               ← CLV applied to the two liberalisms
+│   ├── table2_alterity_todorov.csv           ← three planes of alterity
+│   ├── table3_community_layers_coupling.csv  ← the decoupling diagnosis (key finding)
+│   ├── table4_reform_chronology.csv          ← the four Plan-C reforms, DOF-dated
+│   ├── tables_all.json                       ← all tables + schema, one file
+│   └── bibliography.bib
+│
+├── protocol/                     ← CC0
+│   └── premises_and_hypotheses.md            ← premises, hypotheses, coding rules, forecasts
+│
+└── figures/
+    └── figure3_analytical_architecture.png
+```
 
-## Analytical frameworks
+## Two licenses, on purpose
 
-The article deploys four sequential analytical frameworks, synthesised through the Constitutional Legitimacy Vector (CLV):
+- **Manuscript** (`/manuscript/`) → **CC BY-NC 4.0** (`LICENSE`)
+- **Data and protocol** (`/data/`, `/protocol/`) → **CC0 1.0** (`LICENSE-data`)
 
-| # | Framework | Source | Function in the article |
-|---|-----------|--------|------------------------|
-| 1 | Comparative legal traditions | Glenn (2014) | Civil law as condition of possibility |
-| 2 | Sources of constitutional legitimation | Pegoraro & Rinella (2016) | CLV construction |
-| 3 | Alterity and construction of the Other | Todorov (1982) | Neoporfirista/Popular distinction |
-| 4 | Imagined community layers | Anderson (1983) | Structural decoupling diagnosis |
+The permissive CC0 on the data layer is deliberate: it lets other researchers reapply the Constitutional Legitimacy Vector to new constitutional conflicts, and integrate the reform chronology into comparative datasets, without licensing friction — the standard FAIR recommendation for structured research data.
 
----
+> The license of the final **typeset** article (Version of Record) is governed by INGURUAK's editorial policy; consult <http://inguruak.eus>.
 
-## Contents
+## How to reuse the instrument
 
-| File | Description |
-|------|-------------|
-| `Bourguet_2026_Contested_Liberalisms_Mexico_AAM.pdf` | Accepted Author Manuscript (PDF) |
-| `CITATION.cff` | Machine-readable citation metadata (GitHub/Zenodo standard) |
-| `.zenodo.json` | Zenodo deposit metadata |
-| `LICENSE` | Creative Commons BY-NC 4.0 licence |
-| `README.md` | This file |
-
----
+The Constitutional Legitimacy Vector is designed to travel. To apply it to another country:
+1. Start from `data/table1a_clv_general_instrument.csv` (the blank instrument).
+2. Replace the CPEUM article anchors with the target constitution's articles.
+3. Build a `1b`-style application table using the coding rules in `protocol/premises_and_hypotheses.md` § 4.
 
 ## Citation
 
-### Cite the Zenodo deposit (before formal journal publication)
+> Bourguet, Luis (2026). *Contested Liberalisms in Mexico: Popular Liberalism, the Fourth Transformation, and the Struggle over Constitutional Identity* [Accepted Author Manuscript, with FAIR data companion]. Zenodo. https://doi.org/10.5281/zenodo.21386477
 
-> Bourguet, Luis (2026). *Contested Liberalisms in Mexico: Popular Liberalism, the Fourth Transformation, and the Struggle over Constitutional Identity* [Accepted Author Manuscript]. Zenodo. https://doi.org/10.5281/zenodo.21386477
+Once published, cite the journal Version of Record (INGURUAK, ISSN 0214-791X) and reference this deposit for the data.
 
-### Cite the published journal article (once available)
+## Notes and provenance
 
-> Bourguet, Luis (2026). Contested Liberalisms in Mexico: Popular Liberalism, the Fourth Transformation, and the Struggle over Constitutional Identity. *INGURUAK — Revista Vasca de Sociología y Ciencia Política*, ISSN: 0214-791X. https://doi.org/10.18543/inguruak-XXXX ← *to be updated*
-
----
-
-## Version history
-
-| Version | Date | Notes |
-|---------|------|-------|
-| Accepted Author Manuscript (AAM) | July 2026 | Minor revisions accepted; this repository |
-| Working paper — "Contested Sovereignty" | Pre-2026 | Publicly circulated at *Emergent Sovereignties* — Fifth International Conference on Nationalism. Available at: https://emergentsovereignties.net/en/abstract/ |
+- Previously circulated as a working paper titled **"Contested Sovereignty"** at *Emergent Sovereignties* — the Fifth International Conference on Nationalism (<https://emergentsovereignties.net/en/abstract/>).
+- Primary legal sources (CPEUM, DOF decrees) are **linked, not mirrored**, so they always resolve to the canonical, current version.
+- Figures 1–2 (Alarcón political cartoons) are **not** included here: they require reproduction permission and are omitted from the open deposit.
 
 ---
 
-## Licence
-
-This Accepted Author Manuscript is shared under a  
-**[Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)** licence.
-
-You are free to share and adapt this material for **non-commercial purposes**, provided:
-- Appropriate credit is given (author, title, DOI)
-- Any changes are clearly indicated
-- The material is not used for commercial purposes
-
-> **Note on the published version:** The licence of the final typeset article published by INGURUAK may differ. Consult [http://inguruak.eus](http://inguruak.eus) for the terms applicable to the Version of Record.
-
----
-
-*Repository maintained by the author. Last updated: July 2026.*
+*Repository maintained by the author. Data and protocol dedicated to the public domain (CC0 1.0); manuscript under CC BY-NC 4.0.*
