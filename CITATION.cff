@@ -1,0 +1,101 @@
+cff-version: 1.2.0
+message: >
+  If you cite this work before formal journal publication, please use the
+  Zenodo deposit metadata below. Once the article is published in INGURUAK,
+  please use the preferred-citation block (update with volume, issue, pages,
+  and journal DOI when available).
+
+type: article
+
+title: >
+  Contested Liberalisms in Mexico: Popular Liberalism, the Fourth
+  Transformation, and the Struggle over Constitutional Identity
+
+authors:
+  - family-names: Bourguet
+    given-names: Luis
+    orcid: "https://orcid.org/0000-0002-4673-4486"
+    affiliation: >
+      Universidad Complutense de Madrid (UCM); Università di Torino,
+      LabOnt — Center for Ontology; Hiroshima University,
+      Laboratory of Complex Systems
+    email: luisbour@ucm.es
+
+abstract: >
+  Mexico's Cuarta Transformación (4T) is usually read as one instance of a
+  global illiberal turn. This article argues instead that the Mexican
+  constitutional conflict is internal to the liberal-republican tradition:
+  rival projects each claim the mantle of liberalism to define who counts as
+  'the people'. Drawing on scholarship on popular and plebeian liberalism in
+  Spanish America, it shows that the 4T advances by appropriating a popular,
+  Juarista liberalism against a proprietary one it codes as neoporfirista.
+  Four frameworks — comparative law, legitimation theory, alterity and
+  imagined communities — are applied to presidential discourse, three
+  constitutional reforms and political cartoons, and synthesised through a
+  Constitutional Legitimacy Vector (CLV). The appropriation reconfigures who
+  counts as 'the people' and why citizens obey, producing a structural
+  decoupling resistant to procedural resolution. The case refines the theory
+  of illiberalism: Latin American populism can operate through appropriation
+  of the liberal lineage, not its negation.
+
+keywords:
+  - Popular Liberalism
+  - Plebeian Liberalism
+  - Constitutional Identity
+  - Constitutional Legitimacy
+  - Constitutional Legitimacy Vector
+  - Populism
+  - Fourth Transformation (4T)
+  - Cuarta Transformación
+  - Mexico
+  - Intra-liberal conflict
+  - Comparative constitutional law
+  - Latin American politics
+
+license: "CC-BY-NC-4.0"
+license-url: "https://creativecommons.org/licenses/by-nc/4.0/"
+
+date-released: "2026-07-16"
+
+repository-code: "https://github.com/[YOUR-USERNAME]/contested-liberalisms-mexico"
+
+identifiers:
+  - description: "Zenodo DOI — Accepted Author Manuscript deposit"
+    type: doi
+    value: "10.5281/zenodo.21386477"
+  - description: "Author ORCID"
+    type: url
+    value: "https://orcid.org/0000-0002-4673-4486"
+
+version: "1.0.0"
+
+# ─── PREFERRED CITATION (update when formally published) ──────────────────────
+preferred-citation:
+  type: article
+
+  title: >
+    Contested Liberalisms in Mexico: Popular Liberalism, the Fourth
+    Transformation, and the Struggle over Constitutional Identity
+
+  authors:
+    - family-names: Bourguet
+      given-names: Luis
+      orcid: "https://orcid.org/0000-0002-4673-4486"
+      affiliation: "Universidad Complutense de Madrid (UCM)"
+
+  journal: "INGURUAK — Revista Vasca de Sociología y Ciencia Política"
+  issn: "0214-791X"
+  year: 2026
+
+  # ── Fill in when INGURUAK publishes the article ──
+  # volume: ""
+  # issue: ""
+  # start: ""
+  # end: ""
+  # doi: "10.18543/inguruak-XXXX"
+
+  url: "https://inguruak.eus"
+  notes: >
+    Accepted for publication. Journal DOI, volume, issue and page numbers
+    to be added upon formal publication. Deposited AAM available at:
+    https://doi.org/10.5281/zenodo.21386477
