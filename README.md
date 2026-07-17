@@ -5,6 +5,11 @@
 [![Data: CC0](https://img.shields.io/badge/Data-CC0%201.0-brightgreen.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21386477.svg)](https://doi.org/10.5281/zenodo.21386477)
 [![ORCID](https://img.shields.io/badge/ORCID-0000--0002--4673--4486-a6ce39.svg)](https://orcid.org/0000-0002-4673-4486)
+[![Explorer](https://img.shields.io/badge/▶_Interactive-Explorer-274060.svg)](https://luisbourguet.github.io/contested-liberalisms-mexico/explorer.html)
+
+> ### 🔎 Interactive explorer
+> **[Open the explorer →](https://luisbourguet.github.io/contested-liberalisms-mexico/explorer.html)** — bilingual (EN / ES), reads the data tables live from this repository.
+> Explore the Constitutional Legitimacy Vector, the decoupling diagnosis, and the reform chronology interactively. Also available as the file [`explorer.html`](explorer.html) — one self-contained page that works offline.
 
 **Author:** Luis Bourguet — [luisbour@ucm.es](mailto:luisbour@ucm.es)
 **Affiliations:** Universidad Complutense de Madrid (UCM) · Università di Torino, LabOnt — Center for Ontology · Hiroshima University, Laboratory of Complex Systems
@@ -28,6 +33,7 @@ Mexico's *Cuarta Transformación* (4T) is usually read as one instance of a glob
 
 ```
 ├── README.md                     ← this file
+├── explorer.html                 ← interactive bilingual explorer (live-updating)
 ├── CITATION.cff                  ← how to cite
 ├── .zenodo.json                  ← Zenodo deposit metadata
 ├── LICENSE                       ← CC BY-NC 4.0 (manuscript)
