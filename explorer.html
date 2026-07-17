@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contested Liberalisms in Mexico — Interactive Explorer</title>
+<meta name="description" content="Interactive explorer for 'Contested Liberalisms in Mexico': the Constitutional Legitimacy Vector, the decoupling diagnosis, and the Plan-C reform chronology. Bilingual EN/ES.">
+<meta name="author" content="Luis Bourguet">
+<style>
+  :root{
+    --ink:#1c1a17; --paper:#f6f2e9; --paper2:#efe9dc; --line:#cdc3ad;
+    --pop:#7c2d2d;       /* popular liberalism — deep carmine */
+    --proc:#274060;      /* procedural liberalism — slate indigo */
+    --decoupled:#a8322d; --dispute:#c8781e; --synthesis:#2f6b8f;
+    --muted:#6a6252; --gold:#9a7b32;
+    --shadow:0 1px 0 rgba(0,0,0,.04),0 2px 14px rgba(40,30,10,.06);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Optima","Segoe UI",Candara,"Gill Sans",sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);line-height:1.55;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+  /* ---- top bar ---- */
+  header.bar{position:sticky;top:0;z-index:40;background:rgba(246,242,233,.92);
+    backdrop-filter:saturate(1.3) blur(8px);border-bottom:1px solid var(--line)}
+  .bar .wrap{display:flex;align-items:center;gap:16px;height:56px}
+  .brand{font-family:var(--sans);font-weight:700;letter-spacing:.02em;font-size:.92rem;color:var(--ink)}
+  .brand small{display:block;font-weight:400;color:var(--muted);font-size:.72rem;letter-spacing:.04em}
+  .bar nav{margin-left:auto;display:flex;gap:2px;flex-wrap:wrap}
+  .bar nav a{font-family:var(--sans);font-size:.78rem;color:var(--muted);text-decoration:none;
+    padding:6px 9px;border-radius:6px;white-space:nowrap}
+  .bar nav a:hover{background:var(--paper2);color:var(--ink)}
+  .lang{font-family:var(--sans);font-size:.74rem;border:1px solid var(--line);border-radius:20px;
+    overflow:hidden;display:flex;flex:none}
+  .lang button{border:0;background:transparent;padding:6px 11px;cursor:pointer;color:var(--muted);font:inherit}
+  .lang button.on{background:var(--ink);color:var(--paper)}
+
+  /* ---- hero ---- */
+  .hero{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--sans);letter-spacing:.22em;text-transform:uppercase;font-size:.7rem;
+    color:var(--gold);margin-bottom:18px}
+  h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.06;margin:0 0 10px;font-weight:600;letter-spacing:-.01em}
+  .sub{font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--muted);font-style:italic;max-width:38ch;margin:0 0 26px}
+  .thesis{background:linear-gradient(180deg,var(--paper2),transparent);border-left:3px solid var(--gold);
+    padding:16px 20px;max-width:64ch;font-size:1.06rem;border-radius:0 8px 8px 0}
+  .meta{margin-top:26px;font-family:var(--sans);font-size:.8rem;color:var(--muted);display:flex;
+    gap:18px;flex-wrap:wrap;align-items:center}
+  .meta a{color:var(--proc);text-decoration:none;border-bottom:1px solid var(--line)}
+  .pill{display:inline-flex;align-items:center;gap:6px;background:var(--paper2);border:1px solid var(--line);
+    padding:4px 10px;border-radius:20px}
+  .live-dot{width:7px;height:7px;border-radius:50%;background:var(--muted);flex:none}
+  .live-dot.on{background:#3a8a4a;box-shadow:0 0 0 3px rgba(58,138,74,.18)}
+
+  /* ---- sections ---- */
+  section{padding:52px 0;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--sans);letter-spacing:.16em;text-transform:uppercase;font-size:.7rem;
+    color:var(--gold);margin-bottom:8px;display:flex;gap:10px;align-items:baseline}
+  .eyebrow .n{color:var(--line);font-weight:700}
+  h2{font-size:clamp(1.5rem,3.4vw,2.1rem);margin:0 0 6px;font-weight:600;letter-spacing:-.01em}
+  .lede{color:var(--muted);max-width:66ch;margin:0 0 26px;font-size:1.04rem}
+
+  /* ---- two-liberalisms legend ---- */
+  .duo{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px;font-family:var(--sans);font-size:.82rem}
+  .duo span{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:20px;border:1px solid var(--line)}
+  .sw{width:11px;height:11px;border-radius:3px;flex:none}
+  .sw.pop{background:var(--pop)} .sw.proc{background:var(--proc)}
+
+  /* ---- CLV interactive ---- */
+  .clv{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:8px}
+  .src{border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--paper2);
+    cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative}
+  .src:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .src.sel{border-color:var(--ink);box-shadow:var(--shadow)}
+  .src h4{margin:0 0 4px;font-size:1rem;font-family:var(--sans)}
+  .src .maxim{font-style:italic;color:var(--muted);font-size:.86rem}
+  .src .bar-mini{height:4px;border-radius:2px;margin-top:10px;background:var(--line);overflow:hidden}
+  .src .bar-mini i{display:block;height:100%}
+  .clv-detail{border:1px solid var(--line);border-radius:12px;padding:20px;background:#fff;min-height:120px;
+    box-shadow:var(--shadow)}
+  .clv-detail .cols{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:12px}
+  @media(max-width:640px){.clv-detail .cols{grid-template-columns:1fr}}
+  .clv-detail .col h5{font-family:var(--sans);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;
+    margin:0 0 6px;padding-bottom:5px;border-bottom:2px solid}
+  .col.pop h5{color:var(--pop);border-color:var(--pop)}
+  .col.proc h5{color:var(--proc);border-color:var(--proc)}
+  .clv-detail .anchor{margin-top:14px;font-family:var(--mono);font-size:.76rem;color:var(--muted);
+    background:var(--paper);padding:8px 10px;border-radius:6px}
+
+  /* ---- coupling matrix ---- */
+  .matrix{display:grid;gap:8px}
+  .mrow{display:grid;grid-template-columns:1fr;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    background:var(--paper2);cursor:pointer;transition:box-shadow .15s}
+  .mrow:hover{box-shadow:var(--shadow)}
+  .mhead{display:flex;align-items:center;gap:12px;padding:12px 14px}
+  .code-dot{width:14px;height:14px;border-radius:4px;flex:none}
+  .cd-decoupled{background:var(--decoupled)} .cd-in_dispute{background:var(--dispute)}
+  .cd-synthesis{background:var(--synthesis)}
+  .mhead .layer{font-family:var(--sans);font-weight:600;font-size:.95rem}
+  .mhead .q{color:var(--muted);font-style:italic;font-size:.86rem;margin-left:auto;text-align:right}
+  .mhead .tag{font-family:var(--sans);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+    padding:3px 8px;border-radius:20px;color:#fff;flex:none}
+  .tag.decoupled{background:var(--decoupled)} .tag.in_dispute{background:var(--dispute)}
+  .tag.synthesis{background:var(--synthesis)}
+  .mbody{display:none;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+  .mrow.open .mbody{display:grid}
+  @media(max-width:640px){.mbody{grid-template-columns:1fr}}
+  .mbody .half{padding:12px 14px;font-size:.9rem}
+  .mbody .half.pop{background:rgba(124,45,45,.05);border-right:1px solid var(--line)}
+  .mbody .half.proc{background:rgba(39,64,96,.05)}
+  @media(max-width:640px){.mbody .half.pop{border-right:0;border-bottom:1px solid var(--line)}}
+  .mbody .half b{font-family:var(--sans);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:4px}
+  .half.pop b{color:var(--pop)} .half.proc b{color:var(--proc)}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--sans);font-size:.8rem;margin:18px 0 22px}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+
+  /* ---- generic data table ---- */
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;font-size:.88rem;background:#fff}
+  th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--paper2);vertical-align:top}
+  thead th{font-family:var(--sans);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);background:var(--paper2);position:sticky;top:0}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr.synthrow{background:rgba(47,107,143,.06);font-weight:500}
+
+  /* ---- timeline ---- */
+  .tl{position:relative;padding-left:26px}
+  .tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tlitem{position:relative;margin-bottom:20px;background:var(--paper2);border:1px solid var(--line);
+    border-radius:10px;padding:14px 16px}
+  .tlitem::before{content:"";position:absolute;left:-23px;top:18px;width:12px;height:12px;border-radius:50%;
+    background:var(--pop);border:2px solid var(--paper)}
+  .tlitem .date{font-family:var(--mono);font-size:.78rem;color:var(--gold);font-weight:700}
+  .tlitem h4{margin:2px 0 6px;font-family:var(--sans);font-size:1.02rem}
+  .tlitem .eff{display:inline-block;margin-top:8px;font-family:var(--sans);font-size:.76rem;
+    background:#fff;border:1px solid var(--line);padding:3px 9px;border-radius:20px}
+  .tlitem .art{font-family:var(--mono);font-size:.72rem;color:var(--muted);margin-left:8px}
+
+  /* ---- trajectories ---- */
+  .traj{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+  .tcard{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--paper2);
+    border-top:4px solid var(--gold)}
+  .tcard h4{margin:0 0 6px;font-family:var(--sans)}
+  .tcard p{margin:0;font-size:.88rem;color:var(--muted)}
+  .tcard .sig{margin-top:10px;font-size:.78rem;font-family:var(--mono);color:var(--proc)}
+
+  /* ---- chain ---- */
+  .chain{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-family:var(--sans);font-size:.8rem}
+  .chain .node{background:var(--paper2);border:1px solid var(--line);padding:6px 11px;border-radius:20px}
+  .chain .arr{color:var(--gold);font-weight:700}
+
+  footer{padding:48px 0 70px;color:var(--muted);font-family:var(--sans);font-size:.82rem}
+  footer a{color:var(--proc)}
+  .lic{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .lic span{border:1px solid var(--line);border-radius:6px;padding:4px 10px;background:var(--paper2)}
+  .en,.es{display:none}
+  html[data-lang="en"] .en{display:revert}
+  html[data-lang="es"] .es{display:revert}
+  .en.inl,.es.inl{display:none}
+  html[data-lang="en"] .en.inl{display:inline}
+  html[data-lang="es"] .es.inl{display:inline}
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <div class="brand">Contested Liberalisms
+      <small class="en">Interactive research explorer</small>
+      <small class="es">Explorador interactivo de investigación</small>
+    </div>
+    <nav>
+      <a href="#clv"><span class="en inl">Legitimacy</span><span class="es inl">Legitimidad</span></a>
+      <a href="#alterity"><span class="en inl">Alterity</span><span class="es inl">Alteridad</span></a>
+      <a href="#coupling"><span class="en inl">Decoupling</span><span class="es inl">Desacople</span></a>
+      <a href="#reforms"><span class="en inl">Reforms</span><span class="es inl">Reformas</span></a>
+      <a href="#futures"><span class="en inl">Futures</span><span class="es inl">Futuros</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button id="btn-en" class="on" onclick="setLang('en')">EN</button>
+      <button id="btn-es" onclick="setLang('es')">ES</button>
+    </div>
+  </div>
+</header>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Bourguet · INGURUAK 2026 · <span class="en inl">Open Science deposit</span><span class="es inl">Depósito de Ciencia Abierta</span></div>
+  <h1>Contested Liberalisms in Mexico</h1>
+  <p class="sub">
+    <span class="en inl">Popular liberalism, the Fourth Transformation, and the struggle over constitutional identity.</span>
+    <span class="es inl">Liberalismo popular, la Cuarta Transformación y la disputa por la identidad constitucional.</span>
+  </p>
+  <div class="thesis">
+    <span class="en">The Mexican constitutional conflict is <b>internal to the liberal-republican tradition</b> — a dispute of degree and dialect <i>within</i> liberalism, not a liberal-vs-illiberal rupture. The Fourth Transformation advances by <b>appropriating</b> a popular, Juarista liberalism against a proprietary one it codes as <i>neoporfirista</i>.</span>
+    <span class="es">El conflicto constitucional mexicano es <b>interno a la tradición liberal-republicana</b>: una disputa de grado y dialecto <i>dentro</i> del liberalismo, no una ruptura liberal-vs-iliberal. La Cuarta Transformación avanza <b>apropiándose</b> de un liberalismo popular, juarista, frente a uno propietario que codifica como <i>neoporfirista</i>.</span>
+  </div>
+  <div class="meta">
+    <span class="pill"><span class="live-dot" id="livedot"></span><span id="livetext" class="en inl">Checking live data…</span><span id="livetext-es" class="es inl">Comprobando datos…</span></span>
+    <a href="https://doi.org/10.5281/zenodo.21386477" target="_blank" rel="noopener">DOI 10.5281/zenodo.21386477</a>
+    <a href="https://github.com/Luisbourguet/contested-liberalisms-mexico" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://orcid.org/0000-0002-4673-4486" target="_blank" rel="noopener">ORCID</a>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+<!-- ORIENTATION -->
+<section id="about">
+  <div class="eyebrow"><span class="n">00</span><span class="en inl">Orientation</span><span class="es inl">Orientación</span></div>
+  <h2><span class="en inl">Two liberalisms, one constitution</span><span class="es inl">Dos liberalismos, una constitución</span></h2>
+  <p class="lede">
+    <span class="en">The whole analysis turns on a single tension: two rival liberal projects that each claim the constitution, invoke the same articles, and define "the people" differently. Throughout this explorer they are colour-coded so you can follow them.</span>
+    <span class="es">Todo el análisis gira sobre una sola tensión: dos proyectos liberales rivales que reclaman la constitución, invocan los mismos artículos y definen "el pueblo" de modo distinto. En todo el explorador se distinguen por color.</span>
+  </p>
+  <div class="duo">
+    <span><i class="sw pop"></i><span class="en inl">Popular liberalism (4T)</span><span class="es inl">Liberalismo popular (4T)</span></span>
+    <span><i class="sw proc"></i><span class="en inl">Procedural liberalism</span><span class="es inl">Liberalismo procedimental</span></span>
+  </div>
+  <div class="chain" aria-hidden="true">
+    <span class="node">THEORY</span><span class="arr">→</span>
+    <span class="node">ONTOLOGY</span><span class="arr">→</span>
+    <span class="node">LEGITIMACY</span><span class="arr">→</span>
+    <span class="node">ALTERITY</span><span class="arr">→</span>
+    <span class="node">MECHANISM</span><span class="arr">→</span>
+    <span class="node">INDICATOR</span><span class="arr">→</span>
+    <span class="node">VERIFICATION</span><span class="arr">→</span>
+    <span class="node">FORESIGHT</span>
+  </div>
+</section>
+
+<!-- CLV -->
+<section id="clv">
+  <div class="eyebrow"><span class="n">01</span><span class="en inl">Legitimacy · CLV</span><span class="es inl">Legitimidad · VLC</span></div>
+  <h2><span class="en inl">The Constitutional Legitimacy Vector</span><span class="es inl">El Vector de Legitimidad Constitucional</span></h2>
+  <p class="lede">
+    <span class="en">Constitutional obedience is never automatic — it must be explained. Following Pegoraro &amp; Rinella, five sources of legitimation compose the vector. Select a source to see how each liberalism claims or suppresses it.</span>
+    <span class="es">La obediencia constitucional nunca es automática: debe explicarse. Siguiendo a Pegoraro y Rinella, cinco fuentes de legitimación componen el vector. Seleccione una fuente para ver cómo cada liberalismo la reclama o la suprime.</span>
+  </p>
+  <div class="clv" id="clv-grid"></div>
+  <div class="clv-detail" id="clv-detail"></div>
+</section>
+
+<!-- ALTERITY -->
+<section id="alterity">
+  <div class="eyebrow"><span class="n">02</span><span class="en inl">Alterity · Todorov</span><span class="es inl">Alteridad · Todorov</span></div>
+  <h2><span class="en inl">Constructing the Other</span><span class="es inl">La construcción del Otro</span></h2>
+  <p class="lede">
+    <span class="en">Every definition of a people constructs an "other" across three independent planes. The two liberalisms differ not in whether they exclude, but in how.</span>
+    <span class="es">Toda definición de un pueblo construye un "otro" en tres planos independientes. Los dos liberalismos difieren no en si excluyen, sino en cómo.</span>
+  </p>
+  <div class="tablewrap"><table id="t-alterity"></table></div>
+</section>
+
+<!-- COUPLING -->
+<section id="coupling">
+  <div class="eyebrow"><span class="n">03</span><span class="en inl">Diagnosis · Decoupling</span><span class="es inl">Diagnóstico · Desacople</span></div>
+  <h2><span class="en inl">The structural decoupling</span><span class="es inl">El desacople estructural</span></h2>
+  <p class="lede">
+    <span class="en">The article's central finding. A resilient order needs its community layers to couple onto a shared frame. Here the two projects align on <b>non-overlapping</b> layers — which is why the conflict resists procedural resolution. Click any layer to expand.</span>
+    <span class="es">El hallazgo central del artículo. Un orden resiliente necesita que sus capas de comunidad se acoplen a un marco compartido. Aquí los dos proyectos se alinean en capas <b>no superpuestas</b>, y por eso el conflicto resiste una resolución procedimental. Haga clic en cualquier capa para expandir.</span>
+  </p>
+  <div class="legend">
+    <span><i class="code-dot cd-decoupled"></i><span class="en inl">Decoupled — held by one project</span><span class="es inl">Desacoplada — sostenida por un proyecto</span></span>
+    <span><i class="code-dot cd-in_dispute"></i><span class="en inl">In dispute — both claim it</span><span class="es inl">En disputa — ambos la reclaman</span></span>
+    <span><i class="code-dot cd-synthesis"></i><span class="en inl">Synthesis — resilience profile</span><span class="es inl">Síntesis — perfil de resiliencia</span></span>
+  </div>
+  <div class="matrix" id="matrix"></div>
+</section>
+
+<!-- REFORMS -->
+<section id="reforms">
+  <div class="eyebrow"><span class="n">04</span><span class="en inl">Verification · Plan C</span><span class="es inl">Verificación · Plan C</span></div>
+  <h2><span class="en inl">The reforms, in the record</span><span class="es inl">Las reformas, en el registro</span></h2>
+  <p class="lede">
+    <span class="en">Every claim is anchored to the dated <i>Diario Oficial de la Federación</i>. Note the recurring signature: each reform proceeds <b>through</b> Article 135 — appropriation, not suspension.</span>
+    <span class="es">Cada afirmación se ancla al <i>Diario Oficial de la Federación</i> fechado. Note la firma recurrente: cada reforma procede <b>a través</b> del Artículo 135 — apropiación, no suspensión.</span>
+  </p>
+  <div class="tl" id="timeline"></div>
+</section>
+
+<!-- INSTRUMENT -->
+<section id="instrument">
+  <div class="eyebrow"><span class="n">05</span><span class="en inl">Reuse · The instrument</span><span class="es inl">Reutilización · El instrumento</span></div>
+  <h2><span class="en inl">Take the instrument elsewhere</span><span class="es inl">Lleve el instrumento a otro caso</span></h2>
+  <p class="lede">
+    <span class="en">The CLV is built to travel. Below is the general instrument — the blank vector before it is applied to any case. Swap the constitutional anchors for another country's and reapply.</span>
+    <span class="es">El VLC está hecho para viajar. Abajo está el instrumento general — el vector en blanco antes de aplicarse a un caso. Cambie los anclajes constitucionales por los de otro país y reaplíquelo.</span>
+  </p>
+  <div class="tablewrap"><table id="t-general"></table></div>
+</section>
+
+<!-- FUTURES -->
+<section id="futures">
+  <div class="eyebrow"><span class="n">06</span><span class="en inl">Foresight</span><span class="es inl">Prospectiva</span></div>
+  <h2><span class="en inl">Five futures</span><span class="es inl">Cinco futuros</span></h2>
+  <p class="lede">
+    <span class="en">Each is a different resolution of the decoupling — checkable against future constitutional publications.</span>
+    <span class="es">Cada uno es una resolución distinta del desacople — comprobable frente a futuras publicaciones constitucionales.</span>
+  </p>
+  <div class="traj" id="traj"></div>
+</section>
+
+</div>
+
+<footer><div class="wrap">
+  <div><b>Contested Liberalisms in Mexico</b> — <span class="en inl">Luis Bourguet. Accepted (minor revisions), INGURUAK — Revista Vasca de Sociología y Ciencia Política (ISSN 0214-791X).</span><span class="es inl">Luis Bourguet. Aceptado (revisiones menores), INGURUAK — Revista Vasca de Sociología y Ciencia Política (ISSN 0214-791X).</span></div>
+  <div style="margin-top:8px">
+    <a href="https://doi.org/10.5281/zenodo.21386477" target="_blank" rel="noopener">Zenodo</a> ·
+    <a href="https://github.com/Luisbourguet/contested-liberalisms-mexico" target="_blank" rel="noopener">GitHub</a> ·
+    <a href="https://orcid.org/0000-0002-4673-4486" target="_blank" rel="noopener">ORCID 0000-0002-4673-4486</a>
+  </div>
+  <div class="lic">
+    <span class="en inl">Manuscript: CC BY-NC 4.0</span><span class="es inl">Manuscrito: CC BY-NC 4.0</span>
+    <span class="en inl">Data &amp; this explorer: CC0 1.0</span><span class="es inl">Datos y este explorador: CC0 1.0</span>
+  </div>
+  <div style="margin-top:12px;font-size:.76rem" id="src-note"></div>
+</div></footer>
+
+<script>
+/* ============ EMBEDDED FALLBACK DATA (faithful to /data/*.csv) ============ */
+const EMBEDDED = {"table1a_clv_general_instrument": [{"source_of_legitimation": "Tradition", "maxim": "Do what the fathers did", "basis_of_the_bond": "Obligation from historical continuity; the past validates the present", "cpeum_anchor": "Art. 39 (sovereignty in the people, original DOF 05-02-1917); 1917 Constituent Congress Preamble"}, {"source_of_legitimation": "Agreement", "maxim": "Behave according to the pacts (pacta sunt servanda)", "basis_of_the_bond": "Norm binds because recipients consented; autonomy of the will", "cpeum_anchor": "Art. 40 (representative, democratic, federal Republic); Art. 135 (supermajority amendment rule)"}, {"source_of_legitimation": "Divine/Religious", "maxim": "Obey God", "basis_of_the_bond": "Transcendent authority; the sacred sanctions the norm", "cpeum_anchor": "Arts. 24 and 130 (freedom of religion; strict Church/State separation \u2014 the Reforma's constitutional legacy)"}, {"source_of_legitimation": "Reason", "maxim": "Follow reason (responsa, jurisprudence, expertise)", "basis_of_the_bond": "Authority of the sage, judge, or expert; rational, law-bound argumentation \u2014 primary source in a civil-law order", "cpeum_anchor": "Arts. 94\u2013107 (judiciary; jurisprudencia); Art. 28 (autonomous bodies, partially extinguished DOF 20 Dec 2024); Art. 1 (human rights via courts)"}, {"source_of_legitimation": "Authority", "maxim": "Obey the leader (political/ideological law)", "basis_of_the_bond": "The apex translates political values into norms; citizens obey as the group's voice (Ehrlich: 'conscious of serving the ruler, and only sometimes of serving the group')", "cpeum_anchor": "Art. 80 (executive power); Art. 89 (presidential faculties); Art. 39 (sovereignty)"}], "table1b_clv_applied": [{"source": "Tradition", "popular_liberalism_4T": "Juarista/Reforma lineage claimed as popular-liberal inheritance; the 4T as its authentic continuation", "procedural_liberalism": "Liberal-constitutional tradition read as the rule-of-law and separation-of-powers heritage", "tension_what_is_at_stake": "Both claim the liberal tradition; neither can accuse the other of abandoning it. Art. 39 sustains both readings"}, {"source": "Agreement", "popular_liberalism_4T": "Consent reactivated as popular sovereignty and plebiscitary mandate (Art. 39); electoral pact as mandate for transformation", "procedural_liberalism": "Constitutional compact (Art. 40, Art. 135) as the binding agreement; procedure as the locus of consent", "tension_what_is_at_stake": "Both invoke the Agreement of the pact with incompatible readings: mandate-to-transform vs. compact-to-constrain"}, {"source": "Divine/Religious", "popular_liberalism_4T": "Largely absent at doctrinal level; moral-traditionalist register (Cartilla Moral) borrows its tone", "procedural_liberalism": "Rawlsian neutrality: law separated from morality", "tension_what_is_at_stake": "Not a primary axis of conflict; noted where moral-traditionalist tone appears"}, {"source": "Reason", "popular_liberalism_4T": "Suppressed: technical/law-bound authority (SCJN, INE, autonomous bodies) recoded as elitist obstacle to the popular will", "procedural_liberalism": "Dominant: judicial independence, jurisprudencia, autonomous expert oversight as reason institutionalised", "tension_what_is_at_stake": "The reason component is what the 4T erodes and procedural liberalism defends. Primary site of the conflict"}, {"source": "Authority", "popular_liberalism_4T": "Dominant source: presidency as authentic voice of the people sutures the Ehrlichian fracture; ma\u00f1aneras as daily re-enactment", "procedural_liberalism": "Formally rejected (rule of law, not of persons); in practice a softer technocratic-leadership version", "tension_what_is_at_stake": "The Ehrlichian fracture the 4T rhetorically dissolves and procedural liberalism insists must remain visible. Art. 39 sustains both"}, {"source": "Common law", "popular_liberalism_4T": "N/A", "procedural_liberalism": "N/A", "tension_what_is_at_stake": "Omission is principled: Glenn (2014) confirms Mexico's civil-law tradition. The 2024 judicial reform moved the system further from any common-law analogy"}, {"source": "Synthesis (legitimacy profile)", "popular_liberalism_4T": "Dominant: Tradition + Agreement (electoral pact) + Authority. Reason suppressed. High mobilising capacity; low counter-majoritarian resilience", "procedural_liberalism": "Dominant: Reason + Agreement (constitutional compact). Authority formally rejected. High procedural stability; low popular mobilising energy", "tension_what_is_at_stake": "Constitutionally undecidable on textual grounds alone: the text contains both profiles. Resolution requires winning the political-legitimacy argument \u2014 Art. 135 is the only operative procedural arbiter"}], "table2_alterity_todorov": [{"todorov_plane": "Axiological (value)", "popular_liberalism_4T": "The other (the 'oligarchy' and its instruments) is judged morally bad, not merely different", "procedural_liberalism": "The other (the popular majority) is judged not bad but epistemically deficient, to be guided"}, {"todorov_plane": "Praxeological (action)", "popular_liberalism_4T": "Assimilation: the people folded into one moral-national subject; dissenters redescribed as outside the nation", "procedural_liberalism": "Containment: the majority bounded by counter-majoritarian institutions and procedure"}, {"todorov_plane": "Epistemic (knowledge)", "popular_liberalism_4T": "Claims intimate knowledge of 'the people' while refusing to know its internal plurality", "procedural_liberalism": "Characteristic failure: refuses to know the popular subject on its own terms"}, {"todorov_plane": "Mode of inclusion", "popular_liberalism_4T": "Moral-national belonging: those faithful to the popular project", "procedural_liberalism": "Rights-bearing citizenship: equal individuals under law"}, {"todorov_plane": "Mode of exclusion", "popular_liberalism_4T": "Moral exclusion: dissent recoded as betrayal / antinational", "procedural_liberalism": "Procedural exclusion: the majority distrusted, distanced from direct rule"}], "table3_community_layers_coupling": [{"community_layer": "Community of Belonging", "central_question": "Who are we?", "popular_liberalism_4T": "Moral-historical 'we'; Juarista lineage; fidelity, not status", "procedural_liberalism": "Abstract citizens; no thick identity claim", "coupling_status": "Decoupled \u2014 4T holds this register", "coupling_code": "decoupled", "section_ref": "\u00a7 5"}, {"community_layer": "Imagined Community (Anderson 1983)", "central_question": "What narrative unites us?", "popular_liberalism_4T": "4T as fourth act of national epic; ma\u00f1aneras as ritual", "procedural_liberalism": "No equivalent narrative; procedure, not story", "coupling_status": "Decoupled \u2014 narrative asymmetry", "coupling_code": "decoupled", "section_ref": "\u00a7\u00a7 4\u20135"}, {"community_layer": "Moral Community", "central_question": "What values bind us?", "popular_liberalism_4T": "Cartilla Moral; 'no mentir, no robar'; thick ethics", "procedural_liberalism": "Rawlsian neutrality: law separated from morality", "coupling_status": "Decoupled \u2014 moral register occupied by 4T", "coupling_code": "decoupled", "section_ref": "\u00a7 5"}, {"community_layer": "Juridical Community", "central_question": "Who recognises the same constitutional frame?", "popular_liberalism_4T": "Claims CPEUM; rewrites it via Art. 135", "procedural_liberalism": "CPEUM as binding compact; institutions as guarantors", "coupling_status": "In dispute \u2014 both claim the text", "coupling_code": "in_dispute", "section_ref": "\u00a7\u00a7 5\u20137"}, {"community_layer": "Epistemic Community", "central_question": "Who defers to specialised knowledge?", "popular_liberalism_4T": "SCJN, INE recoded as elite; expertise dismantled", "procedural_liberalism": "Autonomous bodies as reason institutionalised", "coupling_status": "Decoupled \u2014 4T dismantles; procedural depends on it", "coupling_code": "decoupled", "section_ref": "\u00a7 6"}, {"community_layer": "Constitutional Community", "central_question": "Who shares a constitutional frame?", "popular_liberalism_4T": "Uses frame to remake it; Art. 135 as instrument", "procedural_liberalism": "Defends existing constitutional architecture", "coupling_status": "In dispute \u2014 asymmetrically", "coupling_code": "in_dispute", "section_ref": "\u00a7\u00a7 5\u20136"}, {"community_layer": "Community of Destiny", "central_question": "Is our future collectively shared?", "popular_liberalism_4T": "Each reform existential: transformation or neoporfirismo", "procedural_liberalism": "No eschatology; procedural project lacks urgency", "coupling_status": "Decoupled \u2014 urgency vs. process", "coupling_code": "decoupled", "section_ref": "\u00a7 7"}, {"community_layer": "Ontological Community", "central_question": "Who shares a definition of social reality?", "popular_liberalism_4T": "Redefines people, nation, democracy", "procedural_liberalism": "Accepts existing definitions; no ontological contest", "coupling_status": "Decoupled \u2014 4T fights at ontological level", "coupling_code": "decoupled", "section_ref": "\u00a7 2"}, {"community_layer": "SYNTHESIS (resilience profile)", "central_question": "\u2014", "popular_liberalism_4T": "Aligns: belonging, imagined, moral, destiny, ontological. Gap: juridical, epistemic. High mobilising power; low institutional stability", "procedural_liberalism": "Aligns: juridical, epistemic, constitutional. Gap: belonging, imagined, moral, destiny. High procedural stability; low popular rootedness", "coupling_status": "STRUCTURAL DECOUPLING: non-overlapping layers. Resolution: bridge both sets or hegemonic victory. Art. 135 arbitrates; cannot reunite a split 'we'", "coupling_code": "synthesis", "section_ref": "\u00a7\u00a7 5\u20137"}], "table4_reform_chronology": [{"reform": "Judicial reform", "dof_date": "15 Sep 2024", "dof_date_iso": "2024-09-15", "articles_and_content": "19 articles (17, 94\u2013101, 105, 107\u2026); popular election of ministers, magistrates and judges; SCJN reduced 11\u21929; Tribunal of Judicial Discipline created", "legitimacy_effect": "Reason \u2193 (judicial independence, jurisprudencia)", "enacted_via": "Art. 135"}, {"reform": "National Guard", "dof_date": "30 Sep 2024", "dof_date_iso": "2024-09-30", "articles_and_content": "12 articles (13, 16, 21, 32, 55, 73, 76, 78, 82, 89, 123, 129); Guard incorporated into SEDENA; civilian character removed; overrides prior SCJN ruling", "legitimacy_effect": "Reason \u2193 / Authority \u2191 (order, armed forces)", "enacted_via": "Art. 135"}, {"reform": "Organic simplification", "dof_date": "20 Dec 2024", "dof_date_iso": "2024-12-20", "articles_and_content": "Art. 28 et al.; extinguishes 7 autonomous bodies (INAI, COFECE, IFT, CRE, CNH, CONEVAL, MEJOREDU); functions to the Executive; expressly invokes Art. 135", "legitimacy_effect": "Reason \u2193 (autonomous expert oversight)", "enacted_via": "Art. 135"}, {"reform": "Sovereignty / non-intervention", "dof_date": "1 Apr 2025", "dof_date_iso": "2025-04-01", "articles_and_content": "Art. 40; new paragraphs against foreign intervention in elections and external investigation", "legitimacy_effect": "Tradition/Consent \u2191 (national-popular sovereignty)", "enacted_via": "Art. 135"}]};
+
+/* Static bilingual content that isn't in the CSVs */
+const TRAJ = [
+  {en:["Resilient","Counter-majoritarian institutions absorb the challenge; the decoupling is reversed."],
+   es:["Resiliente","Las instituciones contramayoritarias absorben el desafío; el desacople se revierte."],
+   sig:"Reason rebalanced"},
+  {en:["Polarised","Decoupling entrenched permanently; two publics each cite Art. 39 for its own reading."],
+   es:["Polarizado","Desacople permanente; dos públicos citan el Art. 39 con lecturas opuestas."],
+   sig:"No shared layer"},
+  {en:["Fragmented","Epistemic and juridical layers dissolve without replacement."],
+   es:["Fragmentado","Las capas epistémica y jurídica se disuelven sin reemplazo."],
+   sig:"Architecture dismantled"},
+  {en:["Transformative","A durable new settlement — only if it grows its own epistemic and juridical layers."],
+   es:["Transformador","Un nuevo arreglo duradero — solo si genera sus propias capas epistémica y jurídica."],
+   sig:"Else → Fragmented"},
+  {en:["Post-national","Transnational layers (USMCA, inter-American rights) partly substitute for decoupled national ones."],
+   es:["Posnacional","Capas transnacionales (T-MEC, derechos interamericanos) sustituyen en parte a las nacionales."],
+   sig:"Art. 40 (2025) resists this"}
+];
+const SRC_COLORS = {"Tradition":"#9a7b32","Agreement":"#2f6b8f","Divine/Religious":"#6a6252","Reason":"#274060","Authority":"#7c2d2d"};
+
+let DATA = JSON.parse(JSON.stringify(EMBEDDED));
+let LANG = "en";
+
+/* ---------- language ---------- */
+function setLang(l){
+  LANG=l; document.documentElement.setAttribute("data-lang",l);
+  document.getElementById("btn-en").classList.toggle("on",l==="en");
+  document.getElementById("btn-es").classList.toggle("on",l==="es");
+  renderAll();
+}
+
+/* ---------- live fetch with graceful fallback ---------- */
+const RAW="https://raw.githubusercontent.com/Luisbourguet/contested-liberalisms-mexico/main/data/";
+function parseCSV(t){
+  const rows=[];let i=0,f="",row=[],q=false;
+  while(i<t.length){const c=t[i];
+    if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
+    else{if(c==='"')q=true;else if(c===","){row.push(f);f=""}
+      else if(c==="\n"||c==="\r"){if(f!==""||row.length){row.push(f);rows.push(row);row=[];f=""}if(c==="\r"&&t[i+1]==="\n")i++}
+      else f+=c}
+    i++}
+  if(f!==""||row.length){row.push(f);rows.push(row)}
+  const head=rows.shift();return rows.map(r=>Object.fromEntries(head.map((h,j)=>[h,r[j]??""])));
+}
+async function goLive(){
+  const files={table1a_clv_general_instrument:"table1a_clv_general_instrument.csv",
+    table1b_clv_applied:"table1b_clv_applied.csv",table2_alterity_todorov:"table2_alterity_todorov.csv",
+    table3_community_layers_coupling:"table3_community_layers_coupling.csv",
+    table4_reform_chronology:"table4_reform_chronology.csv"};
+  try{
+    const got={};
+    await Promise.all(Object.entries(files).map(async([k,fn])=>{
+      const r=await fetch(RAW+fn,{cache:"no-store"});if(!r.ok)throw 0;got[k]=parseCSV(await r.text());
+    }));
+    DATA=got; markLive(true); renderAll();
+  }catch(e){ markLive(false); }
+}
+function markLive(on){
+  document.getElementById("livedot").classList.toggle("on",on);
+  const en=document.getElementById("livetext"),es=document.getElementById("livetext-es");
+  en.textContent = on?"Live from GitHub":"Embedded snapshot";
+  es.textContent = on?"En vivo desde GitHub":"Copia incorporada";
+  document.getElementById("src-note").innerHTML = on
+    ? '<span class="en">Tables loaded live from the repository. Edit the CSVs on GitHub and this view updates.</span><span class="es">Tablas cargadas en vivo desde el repositorio. Edite los CSV en GitHub y esta vista se actualiza.</span>'
+    : '<span class="en">Showing the embedded snapshot (offline or blocked fetch). Hosted on the web, it loads live data automatically.</span><span class="es">Mostrando la copia incorporada (sin red o fetch bloqueado). Alojado en la web, carga datos en vivo automáticamente.</span>';
+}
+
+/* ---------- renderers ---------- */
+const T=(k)=>DATA[k]||EMBEDDED[k];
+function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+
+let selectedSrc=0;
+function renderCLV(){
+  const gen=T("table1a_clv_general_instrument");
+  const app=T("table1b_clv_applied");
+  const grid=document.getElementById("clv-grid");
+  grid.innerHTML=gen.map((r,i)=>{
+    const c=SRC_COLORS[r.source_of_legitimation]||"#6a6252";
+    return `<div class="src ${i===selectedSrc?'sel':''}" onclick="selectSrc(${i})">
+      <h4>${esc(r.source_of_legitimation)}</h4>
+      <div class="maxim">“${esc(r.maxim)}”</div>
+      <div class="bar-mini"><i style="width:100%;background:${c}"></i></div></div>`;
+  }).join("");
+  const g=gen[selectedSrc];
+  // match applied row by source name (first word)
+  const key=(g.source_of_legitimation||"").split("/")[0];
+  const a=app.find(x=>x.source&&x.source.indexOf(key)===0)||{};
+  const L=LANG==="en";
+  document.getElementById("clv-detail").innerHTML=`
+    <div style="font-family:var(--sans);font-weight:700">${esc(g.source_of_legitimation)}</div>
+    <div style="color:var(--muted);font-size:.9rem;margin-top:2px">${esc(g.basis_of_the_bond)}</div>
+    <div class="cols">
+      <div class="col pop"><h5>${L?'Popular liberalism (4T)':'Liberalismo popular (4T)'}</h5>${esc(a.popular_liberalism_4T||'—')}</div>
+      <div class="col proc"><h5>${L?'Procedural liberalism':'Liberalismo procedimental'}</h5>${esc(a.procedural_liberalism||'—')}</div>
+    </div>
+    <div class="anchor">⚓ ${esc(g.cpeum_anchor)}</div>
+    ${a.tension_what_is_at_stake?`<div style="margin-top:12px;font-size:.9rem"><b style="font-family:var(--sans);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold)">${L?'At stake':'En juego'}</b><br>${esc(a.tension_what_is_at_stake)}</div>`:''}`;
+}
+function selectSrc(i){selectedSrc=i;renderCLV();}
+
+function renderAlterity(){
+  const d=T("table2_alterity_todorov");const L=LANG==="en";
+  document.getElementById("t-alterity").innerHTML=
+    `<thead><tr><th>${L?'Plane':'Plano'}</th><th style="color:var(--pop)">${L?'Popular liberalism (4T)':'Liberalismo popular (4T)'}</th><th style="color:var(--proc)">${L?'Procedural liberalism':'Liberalismo procedimental'}</th></tr></thead><tbody>`+
+    d.map(r=>`<tr><td><b>${esc(r.todorov_plane)}</b></td><td>${esc(r.popular_liberalism_4T)}</td><td>${esc(r.procedural_liberalism)}</td></tr>`).join("")+`</tbody>`;
+}
+
+function renderMatrix(){
+  const d=T("table3_community_layers_coupling");const L=LANG==="en";
+  document.getElementById("matrix").innerHTML=d.map((r,i)=>{
+    const code=r.coupling_code;const syn=code==="synthesis";
+    return `<div class="mrow ${syn?'open':''}" onclick="this.classList.toggle('open')">
+      <div class="mhead">
+        <i class="code-dot cd-${code}"></i>
+        <span class="layer">${esc(r.community_layer)}</span>
+        <span class="q">${esc(r.central_question)}</span>
+        <span class="tag ${code}">${code.replace('_',' ')}</span>
+      </div>
+      <div class="mbody">
+        <div class="half pop"><b>${L?'Popular (4T)':'Popular (4T)'}</b>${esc(r.popular_liberalism_4T)}</div>
+        <div class="half proc"><b>${L?'Procedural':'Procedimental'}</b>${esc(r.procedural_liberalism)}</div>
+      </div></div>`;
+  }).join("");
+}
+
+function renderTimeline(){
+  const d=T("table4_reform_chronology");
+  document.getElementById("timeline").innerHTML=d.map(r=>`
+    <div class="tlitem">
+      <div class="date">${esc(r.dof_date)} <span class="art">${esc(r.enacted_via)}</span></div>
+      <h4>${esc(r.reform)}</h4>
+      <div style="font-size:.9rem;color:var(--muted)">${esc(r.articles_and_content)}</div>
+      <span class="eff">${esc(r.legitimacy_effect)}</span>
+    </div>`).join("");
+}
+
+function renderGeneral(){
+  const d=T("table1a_clv_general_instrument");const L=LANG==="en";
+  document.getElementById("t-general").innerHTML=
+    `<thead><tr><th>${L?'Source':'Fuente'}</th><th>${L?'Maxim':'Máxima'}</th><th>${L?'Basis of the bond':'Base del vínculo'}</th><th>${L?'CPEUM anchor':'Anclaje CPEUM'}</th></tr></thead><tbody>`+
+    d.map(r=>`<tr><td><b>${esc(r.source_of_legitimation)}</b></td><td><i>${esc(r.maxim)}</i></td><td>${esc(r.basis_of_the_bond)}</td><td style="font-family:var(--mono);font-size:.78rem">${esc(r.cpeum_anchor)}</td></tr>`).join("")+`</tbody>`;
+}
+
+function renderTraj(){
+  document.getElementById("traj").innerHTML=TRAJ.map(t=>{
+    const c=LANG==="en"?t.en:t.es;
+    return `<div class="tcard"><h4>${c[0]}</h4><p>${c[1]}</p><div class="sig">↪ ${t.sig}</div></div>`;
+  }).join("");
+}
+
+function renderAll(){renderCLV();renderAlterity();renderMatrix();renderTimeline();renderGeneral();renderTraj();}
+
+/* init */
+document.documentElement.setAttribute("data-lang","en");
+markLive(false);
+renderAll();
+goLive();
+</script>
+</body>
+</html>
